@@ -13,3 +13,5 @@ router.post('/register', async (req, res) => {
         return res.status(400).send({ error: 'Regostration failed' });
     }
 });
+
+module.exports = app => app.use('/auth', router);
