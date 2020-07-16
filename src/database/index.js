@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/serviceorders', { useMongoClient: true });
 mongoose.Promise = global.Promise;
 
-module.exports = mongoose
+mongoose.connect("mongodb://localhost/serviceorders", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true
+});
+
+module.exports = mongoose;
