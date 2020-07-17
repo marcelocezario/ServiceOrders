@@ -20,13 +20,13 @@ const ServiceSchema = new mongoose.Schema({
     },
     finalValue: {
         type: Number,
-        require: true,
     },
     createdAt: {
         type: Date,
         default: Date.now,
     },
 });
+
 
 const Service = mongoose.model('Service', ServiceSchema);
 

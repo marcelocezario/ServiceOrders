@@ -45,13 +45,26 @@ router.post('/', async (req, res) => {
             serviceOrder.client = serviceOrderClient;
         }));
 
+
         await Promise.all(services.map(async service => {
-            const serviceOrderService = new Service({ ...service, serviceOrder: serviceOrder._id });
+            
+            const serviceOrderService = new Service({
+                ...service,
+                finalValue: service.value * (1- service.discount),
+                serviceOrder: serviceOrder._id
+            });
 
             await serviceOrderService.save();
 
             serviceOrder.services.push(serviceOrderService);
+
         }));
+
+        serviceOrder.amount = 0
+
+        serviceOrder.services.forEach(service => {
+            serviceOrder.amount += service.finalValue      
+        });
 
         await serviceOrder.save();
  
