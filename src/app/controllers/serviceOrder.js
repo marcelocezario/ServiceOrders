@@ -18,11 +18,10 @@ router.get('/', async (req, res) => {
         return res.status(400).send({ error: 'Error loading service orders' });
     }
 });
-/*
+
 router.get('/:serviceOrderId', async (req, res) => {
     try {
-//        const serviceOrder = await ServiceOrder.findById(req.params.serviceOrderId).populate('services']);
-        const serviceOrder = await ServiceOrder.findById(req.params.serviceOrderId);
+        const serviceOrder = await ServiceOrder.findById(req.params.serviceOrderId).populate(['cliente', 'services']);
 
         return res.send({ serviceOrder });
 
@@ -30,7 +29,7 @@ router.get('/:serviceOrderId', async (req, res) => {
         return res.status(400).send({ error: 'Error loading service order' });
     }
 })
-*/
+
 router.post('/', async (req, res) => {
     try {
         const { client, services } = req.body;
