@@ -34,6 +34,6 @@ const ServiceOrderSchema = new mongoose.Schema({
     },
 });
 
-const Client = mongoose.model('Client', UserSchema);
+const ServiceOrder = mongoose.model('ServiceOrder', UserSchema);
 
-module.exports = Client;
+module.exports = ServiceOrder;
