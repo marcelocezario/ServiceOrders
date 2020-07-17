@@ -12,7 +12,6 @@ router.get('/', (req, res) => {
     res.send({ ok: true, user: req.userId });
 });
 
-
 router.get('/:projectId', async (req, res) => {
     res.send({ user: req.userId });
 });
