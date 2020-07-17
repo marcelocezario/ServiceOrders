@@ -1,15 +1,15 @@
 const mongoose = require('../../database');
 
 const ClientSchema = new mongoose.Schema({
-    nome: {
+    name: {
         type: String,
         require: true,
     },
-    endereco: {
+    adress: {
         type: String,
         require: true,
     },
-    telefone: {
+    phone: {
         type: String,
         require: true,
     },
