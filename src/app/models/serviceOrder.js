@@ -21,11 +21,11 @@ const ServiceOrderSchema = new mongoose.Schema({
         ref: 'Service'
     }],
     amount: {
-        type: number,
+        type: Number,
         require: true,
     },
     payday: {
-        type: date,
+        type: Date,
         require: false,
     },
     createdAt: {
