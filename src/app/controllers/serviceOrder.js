@@ -125,15 +125,15 @@ router.put('/:serviceOrderId', async (req, res) => {
         return res.status(400).send({ error: 'Error update service order' + err});
     }
 });
-/*
-router.delete('/:clientId', async (req, res) => {
+
+router.delete('/:serviceOrderId', async (req, res) => {
     try {
-        await Client.findByIdAndRemove(req.params.clientId);
+        await ServiceOrder.findByIdAndRemove(req.params.serviceOrderId);
 
         return res.send({ message: 'Deleting sucessfull'});
     } catch (err) {
-        return res.status(400).send({ error: 'Error deleting client' });
+        return res.status(400).send({ error: 'Error deleting service order' });
     }
 });
-*/
+
 module.exports = app => app.use('/serviceOrders', router);
