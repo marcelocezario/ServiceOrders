@@ -1,20 +1,18 @@
 const mongoose = require('../../database');
 
+function amountValue(services){
+    let amount = 0
+    foreach(service in services){
+        amount += service['finalValue'];
+    }
+    return amount;
+}
+
 const ServiceOrderSchema = new mongoose.Schema({
-    number: {
-        type: Number,
-        require: true,
-    },
     client: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Client',
         require: true,
-    },
-    status: {
-        type: String,
-        enum: ['open', 'closed', 'canceled', 'paid'],
-        require: true,
-        default: 'open'
     },
     services: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -23,10 +21,16 @@ const ServiceOrderSchema = new mongoose.Schema({
     amount: {
         type: Number,
         require: true,
+        default: amountValue(services)
     },
     payday: {
         type: Date,
-        require: false,
+    },
+    status: {
+        type: String,
+        enum: ['open', 'closed', 'canceled', 'paid'],
+        require: true,
+        default: 'open'
     },
     createdAt: {
         type: Date,
