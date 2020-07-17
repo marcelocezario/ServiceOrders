@@ -56,7 +56,7 @@ router.put('/:clientId', async (req, res) => {
 
         await client.save();
 
-        return res.send({ client});
+        return res.send({ client });
     } catch (err) {
         return res.status(400).send({ error: 'Error editing client'});
     }
@@ -66,7 +66,7 @@ router.delete('/:clientId', async (req, res) => {
     try {
         await Client.findByIdAndRemove(req.params.clientId);
 
-        return res.send();
+        return res.send({ message: 'Deleting sucessfull'});
     } catch (err) {
         return res.status(400).send({ error: 'Error deleting client' });
     }
