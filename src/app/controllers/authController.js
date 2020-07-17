@@ -68,16 +68,11 @@ router.post('/forgot_password', async (req, res) => {
     const now = new Date();
     now.setHours(now.getHours() + 1);
 
-    /*await User.findByIdAndUpdate(user.id, {
+    await User.findByIdAndUpdate(user.id, {
         '$set': {
             passwordResetToken: token,
             passwordResetExpires: now,
         }
-    });*/
-
-    await User.updateOne({ _id: user.id, }, {
-        passwordResetToken: token,
-        passwordResetExpires: now,
     });
 
     mailer.sendMail({
@@ -91,7 +86,6 @@ router.post('/forgot_password', async (req, res) => {
     })
 
     } catch (err) {
-        console.log(err);
         res.status(400).send({ error: 'Error on forgot password, try again' });
     }
 });
