@@ -4,7 +4,6 @@ const ServiceOrderSchema = new mongoose.Schema({
     client: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Client',
-        require: true,
     },
     services: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -12,7 +11,6 @@ const ServiceOrderSchema = new mongoose.Schema({
     }],
     amount: {
         type: Number,
-        require: true
     },
     payday: {
         type: Date,
